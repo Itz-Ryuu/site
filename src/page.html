@@ -5,34 +5,18 @@
   <p class="pct" id="loader-pct">000%</p>
 </div>
 
-<div class="topnav">
-  <nav class="wrap" aria-label="Page navigation">
-    <a href="#top">Intro</a>
-    <a href="#about">Who I Am</a>
-    <a href="#rank">Rank</a>
-    <a href="#overview">Overview</a>
-    <a href="#settings">Settings</a>
-    <a href="#build">Build</a>
-  </nav>
-</div>
+  <div class="topnav">
+    <nav class="wrap" aria-label="Page navigation">
+      <a href="#about">Who I Am</a>
+      <a href="#rank">Rank</a>
+      <a href="#overview">Overview</a>
+      <a href="#settings">Settings</a>
+      <a href="#build">Build</a>
+    </nav>
+  </div>
 
-<main>
-  <header class="hero" id="top">
-    <div class="wrap hero-grid">
-      <div>
-        <span class="live"><span class="pulse"><span></span><span></span></span>LIVE · <span id="clock">--:--:--</span></span>
-        <p class="eyebrow" style="margin-top:1.5rem">— Hello, I'm</p>
-        <h1>RYUツ</h1>
-        <p class="tagline">Two wheels on the road, a headset on at night.</p>
-        <p class="riot">RYUツ#KAGE · PC · V26 // Act IV</p>
-        <a class="btn" target="_blank" rel="noreferrer" href="https://tracker.gg/valorant/profile/riot/RYU%E3%83%84%23KAGE/overview?platform=pc&amp;playlist=competitive">Tracker Profile</a>
-      </div>
-      <div class="avatar-wrap">
-        <img src="src/assets/profile.jpg" alt="RYUツ profile portrait" width="400" height="500" />
-        <div class="ghost"></div>
-      </div>
-    </div>
-  </header>
+  <main>
+
 
   <section class="block wrap" id="about">
     <div class="head reveal">
@@ -60,13 +44,13 @@
     <div class="reveal">
       <div class="panel rankcard">
         <div>
-          <p class="eyebrow">Current Rank</p>
-          <p class="tier">Silver 3</p>
-          <p class="sub">Level 75 · 82W - 69L · Peak Silver 3</p>
+          <p class="eyebrow">Current Rank <span id="live-badge" hidden>· LIVE</span></p>
+          <p class="tier" id="live-tier">Silver 3</p>
+          <p class="sub" id="live-sub">Level 75 · 82W - 69L · Peak Silver 3</p>
         </div>
         <div class="right">
-          <div class="track"><div style="width:54.3%"></div></div>
-          <p class="eyebrow" style="margin-top:0.5rem">54.3% win rate</p>
+          <div class="track"><div id="live-bar" style="width:54.3%"></div></div>
+          <p class="eyebrow" style="margin-top:0.5rem" id="live-wr">54.3% win rate</p>
         </div>
       </div>
     </div>
@@ -81,7 +65,7 @@
       <div class="gridpanels">
         <div class="panel">
           <h3 class="eyebrow">Main Agents</h3>
-          <div class="agents">
+          <div class="agents" id="live-agents">
             <div class="agent">
               <img loading="lazy" src="https://media.valorant-api.com/agents/22697a3d-45bf-8dd7-4fec-84a9e28c69d7/fullportrait.png" alt="Chamber official Valorant agent artwork" />
               <div class="info">
@@ -102,7 +86,7 @@
         </div>
         <div class="panel">
           <h3 class="eyebrow">Recent Matches</h3>
-          <ul class="matches">
+          <ul class="matches" id="live-matches">
             <li><span class="res W">W</span><span class="map">Ascent</span><span class="agent-name">Fade</span><span class="score">13-4</span><span class="kda">1.8 KD</span></li>
             <li><span class="res L">L</span><span class="map">Split</span><span class="agent-name">Brimstone</span><span class="score">7-13</span><span class="kda">0.8 KD</span></li>
             <li><span class="res W">W</span><span class="map">Split</span><span class="agent-name">Clove</span><span class="score">13-7</span><span class="kda">2.0 KD</span></li>
@@ -115,6 +99,7 @@
       </div>
     </div>
   </section>
+
 
   <section class="block wrap" id="settings">
     <div class="head reveal">
@@ -196,7 +181,7 @@
           <h3 class="eyebrow">Rig</h3>
           <dl class="rows">
             <div><dt>CPU</dt><dd>AMD Ryzen 5 5500</dd></div>
-            <div><dt>GPU</dt><dd>NVIDIA RTX 2060 Super</dd></div>
+            <div><dtGPU</dt><dd>NVIDIA RTX 2060 Super</dd></div>
             <div><dt>Motherboard</dt><dd>MSI A520M-A PRO</dd></div>
             <div><dt>RAM</dt><dd>Corsair Vengeance LPX 32GB</dd></div>
             <div><dt>Storage</dt><dd>SNV3S 1TB NVMe</dd></div>
@@ -206,9 +191,9 @@
         </div>
         <div class="panel">
           <h3 class="eyebrow">Peripherals</h3>
-          <dl class="rows">
+          <dl>
             <div><dt>Monitor 1</dt><dd>Dahua LM25-E241B 24.5" IPS 240Hz 1ms</dd></div>
-            <div><dt>Monitor 2</dt><dd>MSI MAG 275CQF E18 180Hz 0.5ms</dd></div>
+            <div><dt>Monitor 2</dt><dd>MSI MAG 275CQF E18 180Hv 0.5ms</dd></div>
             <div><dt>Mouse</dt><dd>Logitech G Pro X Superlight 2 SE</dd></div>
             <div><dt>Mousepad</dt><dd>Fnatic XL</dd></div>
             <div><dt>Keyboard</dt><dd>HyperX Alloy Origins Core 65%</dd></div>
@@ -227,16 +212,11 @@
 </main>
 
 <script>
-  // Live clock
+  // Year footer
   (function () {
-    var el = document.getElementById("clock");
-    function tick() {
-      el.textContent = new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit", second: "2-digit" });
-    }
-    tick();
-    setInterval(tick, 1000);
     document.getElementById("year").textContent = new Date().getFullYear();
   })();
+
 
   // Loading screen
   (function () {
@@ -256,7 +236,7 @@
         setTimeout(function () { loader.remove(); }, 350);
       }
     }
-    requestAnimationFrame(frame);
+    requestAnimationFrameFrame);
   })();
 
   // Reveal on scroll
@@ -286,5 +266,54 @@
       var el = document.getElementById(id);
       if (el) io.observe(el);
     });
+  })();
+  // Live tracker stats — fetched from the site API on every page load
+  (function () {
+    var API = "https://project--7d5909d7-fe84-46de-8ed5-123fc26fb1ff.lovable.app/api/public/valorant-stats";
+    fetch(API, { cache: "no-store" })
+      .then(function (r) { return r.json(); })
+      .then(function (d) {
+        if (!d || !d.ok) return;
+        var badge = document.getElementById("live-badge");
+        if (badge) badge.hidden = false;
+
+        if (d.rank) {
+          if (d.rank.tier) document.getElementById("live-tier").textContent = d.rank.tier;
+          var parts = [];
+          if (d.rank.level) parts.push("Level " + d.rank.level);
+          if (d.rank.record) parts.push(d.rank.record);
+          if (d.rank.peak) parts.push("Peak " + d.rank.peak);
+          if (parts.length) document.getElementById("live-sub").textContent = parts.join(" \u00b7 ");
+          if (typeof d.rank.winRatePct === "number") {
+            document.getElementById("live-bar").style.width = d.rank.winRatePct + "%";
+            document.getElementById("live-wwr").textContent = d.rank.winRatePct + "% win rate";
+          }
+        }
+
+        if (d.agents && d.agents.length) {
+          Array.prototype.forEach.call(document.querySelectorAll("#live-agents .agent"), function (el) {
+            var nameEl = el.querySelector(".name");
+            var name = nameEl ? nameEl.textContent.trim().toLowerCase() : "";
+            for (var i = 0; i < d.agents.length; i++) {
+              if (d.agents[i].name.toLowerCase() === name) {
+                el.querySelector(".wr").textContent = d.agents[i].winRate + "% WR";
+                el.querySelector(".kd").textContent = d.agents[i].kd + " KD";
+              }
+            }
+          });
+        }
+
+        if (d.recentMatches && d.recentMatches.length) {
+          var ul = document.getElementById("live-matches");
+          ul.innerHTML = d.recentMatches.map(function (m) {
+            return '<li><span class="res ' + m.result + '">' + m.result + '</span>' +
+              '<span class="map">' + m.map + '</span>' +
+              '<span class="agent-name">' + m.agent + '</span>' +
+              '<span class="score">' + m.score + '</span>' +
+              '<span class="kda">' + m.kda + '</span></li>';
+          }).join("");
+        }
+      })
+      .catch(function () { /* keep the static snapshot */ });
   })();
 </script>
